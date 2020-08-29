@@ -11,6 +11,8 @@ var request = require('request')
 var app = express()
 // var cors = require('cors')
 
+const adminUserIds = ['U0f5c4c43a6894b7cdb496ba7e200788e'];
+
 // app.use(cors())
 app.use(bodyParser.json())
 
@@ -31,7 +33,14 @@ app.post('/webhook', (req, res) => {
     console.log(typeof sender, typeof text)
     // console.log(req.body.events[0])
     if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
-        sendText(sender, text)
+        sendText(sender, 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞')
+    } else {
+      // TODO: Notification to Admin
+      // jibbiw123456@hotmail.com Pikkoro U0f5c4c43a6894b7cdb496ba7e200788e
+      var userId;
+      for(userId in adminUserIds) {
+        sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้\n\"' + text + "\n")
+      }
     }
     res.sendStatus(200)
 })
@@ -42,7 +51,7 @@ function sendText (sender, text) {
       messages: [
         {
           type: 'text',
-          text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞'
+          text: text
         }
       ]
     };
