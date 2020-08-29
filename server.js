@@ -11,6 +11,8 @@ var request = require('request')
 var app = express()
 // var cors = require('cors')
 
+const adminUserIds = ['U0f5c4c43a6894b7cdb496ba7e200788e'];
+
 // app.use(cors())
 app.use(bodyParser.json())
 
@@ -24,7 +26,6 @@ app.get('/', function (req, res) {
 })
 
 app.post('/webhook', (req, res) => {
-    const adminUserIds = ['U0f5c4c43a6894b7cdb496ba7e200788e'];
     var text = req.body.events[0].message.text
     var sender = req.body.events[0].source.userId
     var replyToken = req.body.events[0].replyToken
@@ -37,10 +38,9 @@ app.post('/webhook', (req, res) => {
       // TODO: Notification to Admin
       // jibbiw123456@hotmail.com Pikkoro U0f5c4c43a6894b7cdb496ba7e200788e
       var userId;
-      for(userId in adminUserIds) {
+      for(userId of this.adminUserIds) {
         console.log('userId Admin => ' + userId);
-        // sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้\n\"' + text + "\"");
-        sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้ => ' + text)
+        sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้\n\"' + text + "\"");
       }
     }
     res.sendStatus(200)
