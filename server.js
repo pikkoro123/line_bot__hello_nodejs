@@ -11,8 +11,6 @@ var request = require('request')
 var app = express()
 // var cors = require('cors')
 
-const adminUserIds = ['U0f5c4c43a6894b7cdb496ba7e200788e'];
-
 // app.use(cors())
 app.use(bodyParser.json())
 
@@ -26,6 +24,7 @@ app.get('/', function (req, res) {
 })
 
 app.post('/webhook', (req, res) => {
+    const adminUserIds = ['U0f5c4c43a6894b7cdb496ba7e200788e'];
     var text = req.body.events[0].message.text
     var sender = req.body.events[0].source.userId
     var replyToken = req.body.events[0].replyToken
