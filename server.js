@@ -47,7 +47,7 @@ app.post('/webhook', (req, res) => {
     var userId;
     for (userId of adminUserIds) {
       console.log('userId Admin => ' + userId['userId']);
-      sendText(userId['userId'], 'มีข้อความที่ไม่สามารถตอบได้\n\"UserID ' + sender + " => " + text + "\"");
+      sendText(userId['userId'], 'มีข้อความที่ไม่สามารถตอบได้\nUserID:' + sender + "\n=> \"" + text + "\"");
 
       // sendEmail(userId['email'], sender, text)
       mail.sendEmail('pikkoro', userId['email'], sender, text)
