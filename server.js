@@ -44,7 +44,8 @@ function sendText (sender, text) {
           text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞'
         }
       ]
-    }
+    };
+    console.log('requesting.......................');
     request({
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +59,8 @@ function sendText (sender, text) {
       if (err) console.log('error')
       if (res) console.log('success')
       if (body) console.log(body)
-    })
+    });
+    console.log('done............................');
 }
 
 app.listen(app.get('port'), function () {
