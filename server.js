@@ -56,6 +56,19 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200)
 })
 
+app.get('/testemail', (req, res) => {
+  console.log('testing.......')
+  mail.sendEmail('pikkoro', 'jibbiw123456@hotmail.com', 'My mom' , 'Wtf bro')
+  res.sendStatus(200)
+    /*.then(
+      res.sendStatus(200)
+    ).catch(error => {
+      res.status(500).json({
+        message: error
+      });
+    })*/
+})
+
 function sendText(sender, text) {
   let data = {
     to: sender,

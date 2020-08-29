@@ -4,14 +4,25 @@ var botEmail = 'bunnag.bot@gmail.com';
 var botPassword = 'Bottob123!';
 
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, 
     auth: {
-      user: botEmail,
-      pass: botPassword
+        user: botEmail, 
+        pass: botPassword 
     }
 });
+
+/*const transporterHotmail = nodemailer.createTransport({
+    service: "Hotmail",
+    auth: {
+        user: "jibbiw123456@hotmail.com",
+        pass: "[6ook8ry]]4"
+    }
+});*/
+
 exports.sendEmail = function(botname, adminEmail, sender, text) {
-    console.log('Start sending mail...\n' + botEmail + '\n' + botPassword);
+    // console.log('Start sending mail...\n' + botEmail + '\n' + botPassword);
     var mailOptions = {
         from: botEmail,
         to: adminEmail,
