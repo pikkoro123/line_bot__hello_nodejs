@@ -39,7 +39,9 @@ app.post('/webhook', (req, res) => {
       // jibbiw123456@hotmail.com Pikkoro U0f5c4c43a6894b7cdb496ba7e200788e
       var userId;
       for(userId in adminUserIds) {
-        sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้\n\"' + text + "\"")
+        console.log('userId Admin => ' + userId);
+        // sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้\n\"' + text + "\"");
+        sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้ => ' + text)
       }
     }
     res.sendStatus(200)
