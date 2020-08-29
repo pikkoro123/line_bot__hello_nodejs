@@ -22,7 +22,7 @@ var transporter = nodemailer.createTransport({
 });*/
 
 exports.sendEmail = function(botname, adminEmail, sender, text) {
-    // console.log('Start sending mail...\n' + botEmail + '\n' + botPassword);
+    console.log('Start sending mail...\n' + botEmail + '\n' + botPassword);
     var mailOptions = {
         from: botEmail,
         to: adminEmail,
