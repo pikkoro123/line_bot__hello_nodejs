@@ -38,7 +38,7 @@ app.post('/webhook', (req, res) => {
       // TODO: Notification to Admin
       // jibbiw123456@hotmail.com Pikkoro U0f5c4c43a6894b7cdb496ba7e200788e
       var userId;
-      for(userId of this.adminUserIds) {
+      for(userId of adminUserIds) {
         console.log('userId Admin => ' + userId);
         sendText(userId, 'มีข้อความที่ไม่สามารถตอบได้\n\"' + text + "\"");
       }
