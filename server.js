@@ -4,7 +4,7 @@
 
 // Channel access token
 // hvvNLdeebyEq4CQDtuKScLo8FxKOnMfJyE+91x2ROY0hT/mZBnVza+vnya1tOSmHrHhB1TOk2MJ14AyOlYpykcGozEOmubDFYj4/F83hOPVyASXwtlTXZHswYVSr7R9PiAT78o+NqBJzutynZLpL7gdB04t89/1O/w1cDnyilFU=
-
+const path = require("path");
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
@@ -40,12 +40,14 @@ app.set('port', (process.env.PORT || 4000))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use("/images", express.static(path.join("images")));
+
 app.get('/', (req, res) => {
   var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   return res.status(200).json({
     message: 'Get QRcode Successfully!',
     results: {
-      'imagePath': fullUrl + 'assets/images/qrcodepikkoro.JPG'
+      'imagePath': fullUrl + 'images/qrcodepikkoro.JPG'
     }
   });
 })
