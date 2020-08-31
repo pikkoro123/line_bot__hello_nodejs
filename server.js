@@ -40,9 +40,14 @@ app.set('port', (process.env.PORT || 4000))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-
-app.get('/', function (req, res) {
-  res.send('Hello')
+app.get('/', (req, res) => {
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  return res.status(200).json({
+    message: 'Get QRcode Successfully!',
+    results: {
+      'imagePath': fullUrl + 'assets/images/qrcodepikkoro.JPG'
+    }
+  });
 })
 
 app.post('/webhook', (req, res) => {
